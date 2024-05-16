@@ -1,4 +1,6 @@
 # Arduino-Soil-Sensor
+https://www.faranux.com/product/the-5-in-1-soil-sensor-npkphconductivitytemperature-and-humidity/
+
 
 ## SD Card
 Arduino --> Master
