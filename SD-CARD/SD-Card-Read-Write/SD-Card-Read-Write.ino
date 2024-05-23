@@ -50,7 +50,9 @@ void setup() {
     // close the file:
     myFile.close();
     Serial.println("done.");
-  } else {
+  } 
+  
+  else {
     // if the file didn't open, print an error:
     Serial.println("error opening test.txt");
   }
