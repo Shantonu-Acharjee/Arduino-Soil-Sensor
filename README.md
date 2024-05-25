@@ -11,6 +11,13 @@ MISO - Master In Slave Out (Card will send data to Arduino)
 MOSI - Master Out Slave In (Arduino Will Send Data to Card)
 SS - Slave Select (if high communication off | if low communication on)
 
+
+## For Arduino Mega
+cs-53
+MOSI-51
+SCK-52
+MISO-50
+
 ## LCD Display
 Past LCD libery on this path
 c:\Users\shant\Documents\Arduino

@@ -33,7 +33,7 @@ SdFile root;
 // Adafruit SD shields and modules: pin 10
 // Sparkfun SD shield: pin 8
 // MKRZero SD: SDCARD_SS_PIN
-const int chipSelect = 4;
+const int chipSelect = 53; //4 pin for Arduino Uno 53 For Meaga
 
 void setup() {
   // Open serial communications and wait for port to open:
