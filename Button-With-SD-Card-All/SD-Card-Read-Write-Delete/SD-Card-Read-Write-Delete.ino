@@ -12,7 +12,7 @@
 #include <SD.h>
 File myFile;
 
-const int CsPin = 4;
+const int CsPin = 53; //Arduino Uno-4 Mega-53
 const int LED = 10;
 const int buttonPin = A0;
 bool buttonState = 0;
@@ -46,10 +46,10 @@ void loop(){
   //Serial.println(buttonState);
 
   if (buttonState == 1 && buttonFlag == 0) {
-    Sd_Card_Write_Data(); // Calling Sd card writeing function
-    digitalWrite(LED, HIGH);
     buttonFlag = 1;
-    delay(200);
+    digitalWrite(LED, HIGH);
+    delay(500);
+    Sd_Card_Write_Data(); // Calling Sd card writeing function
   }
 
   else if (buttonState == 0 && buttonFlag == 1) {
@@ -67,11 +67,12 @@ void loop(){
 
 
 void Sd_Card_Write_Data(){
+
   myFile = SD.open("test.txt", FILE_WRITE);
 
   if (myFile) {
     Serial.println("Writing to test.txt...");
-    myFile.println("testing 1, 2, 3.");
+    myFile.println("hi My name is Shantonu");
     
     // close the file:
     myFile.close();
@@ -83,4 +84,5 @@ void Sd_Card_Write_Data(){
     Serial.println("error opening test.txt");
   }
 
+  return 0; // End Code
 }

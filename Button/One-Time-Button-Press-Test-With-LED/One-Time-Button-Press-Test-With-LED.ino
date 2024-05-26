@@ -18,7 +18,7 @@ void loop(){
   if (buttonState == 1 && buttonFlag == 0) {
     digitalWrite(LED, HIGH);
     buttonFlag = 1;
-    delay(200);
+    delay(50);
   }
 
   else if (buttonState == 0 && buttonFlag == 1) {
