@@ -26,29 +26,18 @@ void setup() {
  
 
   // re-open the file for reading:
-  myFile = SD.open("TempData.txt");
+  myFile = SD.open("test.txt");
   if (myFile) {
-    
+    Serial.println("test.txt:");
 
     // read from the file until there's nothing else in it:
-    int TempDataSum = 0;
-    int TempDataCounter = 0;
     while (myFile.available()) {
       buffer = myFile.readStringUntil('\n');
       //Serial.write(myFile.read());
-      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer data str to int
-      TempDataCounter = TempDataCounter + 1;
-  
       Serial.println(buffer);
-      //Serial.println(TempDataSum);
-      
-    }// While loop end
-    
-    myFile.close();// close the file:
-    
-    Serial.print("The Final value is: ");
-    Serial.println(TempDataSum / TempDataCounter); // Final Ans--------------
-
+    }
+    // close the file:
+    myFile.close();
   } else {
     // if the file didn't open, print an error:
     Serial.println("error opening test.txt");

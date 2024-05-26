@@ -24,4 +24,7 @@ c:\Users\shant\Documents\Arduino
 ic model :- LCDWIKI_KBV mylcd(ILI9486,40,38,39,44,41); //model,cs,cd,wr,rd,reset
 
 
+## For Store more sensor data on SD CARD
+https://dronebotworkshop.com/sd-card-arduino/
 
+String to int ====> stringValue.toInt();
