@@ -1,7 +1,6 @@
 const int LED = 10;
-const int buttonPin = A0;
+const int buttonPin = A2;
 bool buttonState = 0;
-
 int buttonFlag = 0;
 
 void setup() {
@@ -14,6 +13,7 @@ void setup() {
 void loop(){
    
   buttonState = digitalRead(buttonPin);
+  digitalWrite(LED, buttonState);
   Serial.println(buttonState);
-  delay(200);
+  //delay(200);
 }
