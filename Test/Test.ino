@@ -358,20 +358,10 @@ void Sd_Card_Write_Data(){
   // FinalPotassium Section END ------------------XXXXX----------------->
 
 
-
-
   CurrentStatus = "SAMPLE TAKEN";
   TotalSampleData = 1;
 
-/*
-  FinalTemperature = FinalTemperature;
-  FinalMoisture = FinalTemperature;
-  FinalConductivity = FinalTemperature;
-  FinalPH = FinalTemperature;
-  FinalNitrogen  = FinalTemperature;
-  FinalPhosphorus = FinalTemperature;
-  FinalPotassium = FinalTemperature;
-*/
+
  
 }// Eend Sd_Card_Write_Data Function
 
@@ -384,27 +374,35 @@ void Sd_Card_Write_Data(){
 
 void Sd_Card_Resul_Data(){
 
+
+  // Make All Variable FinalTemperature Clean Before Calculation
+  FinalTemperature = 0;
+  FinalMoisture  = 0;
+  FinalConductivity  = 0;
+  FinalPH  = 0;
+  FinalNitrogen  = 0;
+  FinalPhosphorus    = 0;
+  FinalPotassium   = 0;
+  
+  String buffer; // String to hold one line of text
+
+
   Serial.println("****Start Calculation*****");
 
+
+
+
+
+
+
+  // FinalTemperature Data START ========================>>
   myFile = SD.open("TempData.txt");// Open TEMP SAVE FinalTemperature FILE
 
   if (myFile) {
-    
-    
+
     int TempDataSum = 0;
+    TotalSampleData = 0;
 
-    // Make All Variable FinalTemperature Clean Before Calculation
-    FinalTemperature = 0;
-    FinalMoisture  = 0;
-    FinalConductivity  = 0;
-    FinalPH  = 0;
-    FinalNitrogen  = 0;
-    FinalPhosphorus    = 0;
-    FinalPotassium   = 0;
-
-    String buffer; // String to hold one line of text
-
-    
     // read from the file until there's nothing else in it:
     while (myFile.available()) {
 
@@ -413,10 +411,10 @@ void Sd_Card_Resul_Data(){
       TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
       TotalSampleData = TotalSampleData + 1;
   
-      Serial.println(buffer);
+      //Serial.println(buffer);
       
       
-    }// While loop end
+    }// While end
     
     myFile.close();// close the file:
     
@@ -431,13 +429,270 @@ void Sd_Card_Resul_Data(){
     Serial.println("error opening TempData.txt..............");
   }
 
-  // HAVE TO CHANE FinalTemperature LETTER -------------------------------------------------------
-  FinalMoisture  = FinalTemperature;
-  FinalConductivity  = FinalTemperature;
-  FinalPH  = FinalTemperature;
-  FinalNitrogen  = FinalTemperature;
-  FinalPhosphorus    = FinalTemperature;
-  FinalPotassium   = FinalTemperature;
+
+  // FinalTemperature Data END ========================>>
+
+
+
+
+
+
+
+
+
+
+  // FinalMoisture Data START ========================>>
+  myFile = SD.open("MoData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+    TotalSampleData = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalMoisture  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalMoisture); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalMoisture.txt..............");
+  }
+
+
+  // FinalMoisture Data END ========================>>
+
+
+
+
+
+
+
+  // FinalConductivity   Data START ========================>>
+  myFile = SD.open("CoData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+    TotalSampleData = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalConductivity  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalConductivity); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalConductivity.txt..............");
+  }
+
+
+  // FinalConductivity   Data END ========================>>
+
+
+
+
+
+
+
+
+// FinalPH   Data START ========================>>
+  myFile = SD.open("PHData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+    TotalSampleData = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalPH  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalPH); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalPH.txt..............");
+  }
+
+
+  // FinalPH   Data END ========================>>
+
+
+
+
+
+
+
+  // FinalNitrogen   Data START ========================>>
+  myFile = SD.open("NiData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+    TotalSampleData = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalNitrogen  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalNitrogen); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalPH.txt..............");
+  }
+
+
+  // FinalNitrogen   Data END ========================>>
+
+
+
+
+
+// FinalPhosphorus    Data START ========================>>
+  myFile = SD.open("PhoData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalPhosphorus  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalPhosphorus); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalPhosphorus.txt..............");
+  }
+
+
+  // FinalPhosphorus    Data END ========================>>
+
+
+
+
+
+
+
+
+// FinalPotassium   Data START ========================>>
+  myFile = SD.open("PoData.txt");// Open TEMP SAVE FinalTemperature FILE
+
+  if (myFile) {
+
+    int TempDataSum = 0;
+    TotalSampleData = 0;
+
+    // read from the file until there's nothing else in it:
+    while (myFile.available()) {
+
+      buffer = myFile.readStringUntil('\n');
+
+      TempDataSum = TempDataSum + buffer.toInt(); // Convert Buffer FinalTemperature str to int
+      TotalSampleData = TotalSampleData + 1;
+  
+      //Serial.println(buffer);
+      
+      
+    }// While end
+    
+    myFile.close();// close the file:
+    
+    FinalPotassium  = TempDataSum / TotalSampleData;
+    Serial.print("The Final value is: ");
+    Serial.println(FinalPotassium ); // Final Ans--------------
+
+  } 
+  
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening FinalPotassium.txt..............");
+  }
+
+
+  // FinalPotassium  Data END ========================>>
+
+
 
 }// End Sd_Card_Resul_Data
 
@@ -458,12 +713,12 @@ void Sd_Card_Delete_Data(){
   SD.remove("NiData.txt");
   SD.remove("PhoData.txt");
   SD.remove("PoData.txt");
-  
+
   Serial.println("All File Delete");
 
 
   // Male All None Value While Delete All FinalTemperature
-  CurrentStatus = "DELETE ALL FinalTemperature";
+  CurrentStatus = "DELETE ALL";
   TotalSampleData = 0;
 
   FinalTemperature = 0;
