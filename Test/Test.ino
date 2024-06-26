@@ -173,7 +173,7 @@ void loop(){
 
 void Sd_Card_Write_Data(){
 
-  FinalTemperature = analogRead(POTENTIOMETER_PIN);
+  FinalTemperature = random(2, 21);
 
   // Temperature Section START ----------------------------------->
   myFile = SD.open("TempData.txt", FILE_WRITE);
@@ -205,7 +205,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to MoData.txt...");
 
-    FinalMoisture = FinalTemperature + 10;
+    FinalMoisture = random(1, 21);
     myFile.println(FinalMoisture); // Save FinalTemperature on SD Card
     Serial.println(FinalMoisture);
 
@@ -233,7 +233,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to CoData.txt...");
     
-    FinalConductivity = FinalTemperature + 20;
+    FinalConductivity = random(1, 5);
     myFile.println(FinalConductivity); // Save FinalTemperature on SD Card
     Serial.println(FinalConductivity);
 
@@ -260,7 +260,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to PHData.txt...");
     
-    FinalPH  = FinalTemperature + 20;
+    FinalPH  = random(5, 10);
     myFile.println(FinalPH); // Save FinalTemperature on SD Card
     Serial.println(FinalPH);
 
@@ -286,7 +286,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to NiData.txt...");
     
-    FinalNitrogen  = FinalTemperature + 30;
+    FinalNitrogen  = random(10, 100);
     myFile.println(FinalNitrogen); // Save FinalTemperature on SD Card
     Serial.println(FinalNitrogen);
 
@@ -312,7 +312,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to PhoData.txt...");
     
-    FinalPhosphorus  = FinalTemperature + 40;
+    FinalPhosphorus  = random(10, 40);
     myFile.println(FinalPhosphorus); // Save FinalTemperature on SD Card
     Serial.println(FinalPhosphorus);
 
@@ -341,7 +341,7 @@ void Sd_Card_Write_Data(){
   if (myFile) {
     Serial.println("Writing to PoData.txt...");
     
-    FinalPotassium  = FinalTemperature + 50;
+    FinalPotassium  = random(60, 250);
     myFile.println(FinalPotassium); // Save FinalTemperature on SD Card
     Serial.println(FinalPotassium);
 
